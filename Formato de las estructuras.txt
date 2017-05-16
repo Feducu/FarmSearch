@@ -30,6 +30,24 @@ CLIENTE:
 	TELEFONO
 	DOCUMENTO
 	CELULAR
+
+DATOS EN LA FACTURACION:
+	Vendedor
+	OS
+	Fecha
+	COS
+	COS1
+	TP
+	Afiliado
+	NroReceta
+	Medico
+	Cliente
+	Productos (Pueden ser varios)
+	Descuento
+	Total (sin descuentos)
+	Total a pagar (con descuentos)
+	
+	
 	
 
 
