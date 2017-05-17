@@ -8,6 +8,7 @@
 #include<string.h>
 #include<ctype.h>
 #include<stdlib.h>
+#include"fechas.h"
 
 
 typedef struct sfecha{
@@ -40,11 +41,6 @@ void grabarregistro(FILE *f, int nreg, treceta reg);
 treceta leerreceta(FILE *f, int nreg); 
 tfecha calcularfecha(treceta receta, int dias);
 int buscarreg(FILE *archreceta, treceta receta);
-int istreinta(int mes);
-int istreintauno(int mes);
-int isbisiesto(int ano);
-
-
 
 int main() {
 	int e,reg;
@@ -252,26 +248,3 @@ int buscarreg(FILE *archreceta, treceta receta) {
 	}
 	return reg;
 }
-int istreinta(int mes) {
-	if (mes == 4 || mes == 6 || mes == 9 || mes == 11)
-		return 1;
-	else
-		return 0;
-}
-int istreintauno(int mes) {
-	if (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12)
-		return 1;
-	else
-		return 0;
-}
-int isbisiesto(int ano) {
-	int flag=0;
-	if (ano % 4 == 0) {
-		flag = 1;
-		if (ano % 100 == 0)
-			flag = 0;
-		if (ano % 400 == 0)
-			flag = 1;
-	}
-}
-
