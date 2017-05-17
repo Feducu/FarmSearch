@@ -1,0 +1,1 @@
+Averiguar en las droguerias si disponen de un archivo que sea actualizado periodicamente con los precios de los medicamentos.
