@@ -16,12 +16,10 @@
 
 void cargarreceta(treceta receta);
 void imprimirreceta(int nroreg);
-void grabarregistro(FILE *f, int nreg, treceta reg);
-treceta leerreceta(FILE *f, int nreg); 
 tfecha calcularfecha(treceta receta, int dias);
-int buscarreg(FILE *archreceta, treceta receta);
 
-int main() {
+
+int ioma() {
 	int e,reg;
 	treceta receta = { 0 };
 	FILE *archreceta;
@@ -45,7 +43,7 @@ int main() {
 			puts("Hubo un error al abrir el archivo");
 			return 0;
 		}
-		reg = buscarreg(archreceta, receta);
+		reg = buscarreceta(archreceta, receta);
 		receta = leerreceta(archreceta, reg);
 		break;
 	default:
@@ -138,7 +136,7 @@ void cargarreceta(treceta receta){
 	}
 	fseek(archrecetas, 0, SEEK_END);
 	tamano = ftell(archrecetas);
-	grabarregistro(archrecetas, tamano, receta);
+	grabarreceta(archrecetas, tamano, receta);
 	fclose(archrecetas);
 }//ESTA FUNCION CARGA LOS DATOS DE LA RECETA Y LOS GUARDA EN UN ARCHIVO BINARIO.
 void imprimirreceta(int nroreg){
@@ -179,16 +177,7 @@ void imprimirreceta(int nroreg){
 
 
 }//ESTA FUNCION IMPRIME LA RECETA CON LOS CALCULOS DE FECHA YA REALIZADOS.
-void grabarregistro(FILE *f, int nreg, treceta reg){
-	fseek(f,nreg*sizeof(reg),SEEK_SET);
-	fwrite(&reg,sizeof(reg),1,f);
-}
-treceta leerreceta(FILE *f, int nreg){
-	treceta reg;
-	fseek(f,nreg*sizeof(reg),SEEK_SET);
-	fread(&reg,sizeof(reg),1,f);
-	return reg;
-}
+
 tfecha calcularfecha(treceta receta, int dias){
 	tfecha fecha;
 	fecha.ano = receta.fecha.ano;
@@ -213,17 +202,4 @@ tfecha calcularfecha(treceta receta, int dias){
 		}
 	}
 	return fecha;
-}
-int buscarreg(FILE *archreceta, treceta receta) {
-	int reg=0,flag=1;
-	treceta lectura;
-	while (flag)
-	{
-		lectura = leerreceta(archreceta, reg);
-		if (lectura.numero == receta.numero)
-			flag = 0;
-		else		
-			reg++;			
-	}
-	return reg;
 }
