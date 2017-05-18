@@ -4,36 +4,15 @@
 	Sino, se procede a cargar la receta y hacer los calculos correspondientes.
 	Mostrando si están habilitadas o no para ser facturadas.
 */
-#include<stdio.h>
-#include<string.h>
-#include<ctype.h>
-#include<stdlib.h>
-#include"fechas.h"
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdlib.h>
+#include "fechas.h"
+#include "structs.h"
 
 
-typedef struct sfecha{
-	int dia;
-	int mes;
-	int ano;
-}tfecha;
 
-typedef struct autorizacion{
-	tfecha desde;
-	tfecha hasta;
-}tautorizacion;
-
-typedef struct scoseguro{
-	char nombre[100];
-	tfecha fecha;	
-}tcoseguro;
-
-typedef struct sreceta{
-	int cronico;
-	int numero;
-	tautorizacion autorizacion;
-	tcoseguro coseguro;
-	tfecha fecha;
-}treceta;
 
 void cargarreceta(treceta receta);
 void imprimirreceta(int nroreg);
