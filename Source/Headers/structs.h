@@ -24,5 +24,21 @@ typedef struct sreceta{
 	tcoseguro coseguro;
 	tfecha fecha;
 }treceta;
+
+typedef struct sproducto
+{
+	char nombre[100];
+	char lab[100];
+	char tipo[3];
+	float precio;
+	bool trazabilidad;
+	float iva;
+	char barras[13];
+	char troquel[7];
+	tfecha vencimiento;
+	bool baja;
+	int stock;
+	char drogas[200]; // Revisar esto, no se si conviene hacer 2 strings distintas para droga o no.
+}tproducto;
  
 #endif
